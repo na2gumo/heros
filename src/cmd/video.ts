@@ -7,8 +7,9 @@ import {
 import { Command, CommandContext, Option } from 'discord-hono';
 import { BAD_REQUEST_RESPONSE, ERROR_RESPONSE } from '../consts.js';
 import { factory } from '../init.js';
+import type { CommandSet } from '../types.js';
 
-export const videoCommand = factory.command(
+export const videoCommand: CommandSet = factory.command(
     new Command('video', 'Upload Video')
         .description_localizations({ [Locale.Japanese]: '画像をアップロード' })
         .type(ApplicationCommandType.ChatInput)

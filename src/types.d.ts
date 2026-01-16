@@ -13,9 +13,8 @@ export type DiscordHonoBot = DiscordHono<
 >;
 
 export interface CommandSet {
-    command: Command;
-    register(bot: DiscordHonoBot): void;
-    handler(ctx: CommandContext): Promise<Response>;
+    command: Command<{}>;
+    handler: CommandHandler<EnvTypes>;
 }
 
 export interface EnvTypes {

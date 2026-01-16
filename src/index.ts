@@ -4,7 +4,7 @@ import { inArray, isNull, lt } from 'drizzle-orm';
 import { drizzle, DrizzleD1Database } from 'drizzle-orm/d1';
 
 import * as handlers from './cmd';
-import { factory } from './init';
+import { factory } from './init.js';
 import { eros, monsnodes, pendings } from './schema.js';
 import { fetchMonsode } from './source/monsnode.js';
 import { fetchTwiVideo } from './source/twivideo.js';

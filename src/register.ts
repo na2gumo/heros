@@ -1,6 +1,6 @@
 import { register } from 'discord-hono';
 import * as handlers from './cmd';
-import { factory } from './init';
+import { factory } from './init.js';
 
 register(
     factory.getCommands(Object.values(handlers)),
