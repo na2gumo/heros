@@ -117,9 +117,16 @@ export async function workMonsode(db: DrizzleD1Database): Promise<void> {
         const html = await fetch(v.src).then((res) => res.text());
         const $ = load(html);
 
-        let url = $('a').attr('href');
-        // @ts-ignore
-        if (!(url.indexOf('?') === -1)) url = url.split('?')[0];
+        const url = await new Promise((resolve) => {
+            $('script').each((_, el) => {
+                const text = $(el).text();
+                for (const m of text.matchAll(/atob\((['"`])(.*?)\1\)/g)) {
+                    const match = m[2];
+                    const decoded = atob(match);
+                    if (decoded.startsWith('https://video.twimg.com')) return resolve(decoded);
+                }
+            });
+        });
 
         // @ts-ignore
         videos[Number(i)].src = url;
